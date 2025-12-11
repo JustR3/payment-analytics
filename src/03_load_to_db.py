@@ -15,7 +15,7 @@ Output: PostgreSQL 'payments' table
 """
 
 import pandas as pd
-from sqlalchemy import create_engine, text, Column, Integer, String, Float, Boolean, Date, DateTime, MetaData, Table
+from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 from pathlib import Path
 import sys

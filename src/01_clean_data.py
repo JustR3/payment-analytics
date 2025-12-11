@@ -16,7 +16,6 @@ Output: data/processed/payments_clean.parquet
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from datetime import datetime
 
 # Configure pandas display
 pd.set_option('display.max_columns', None)

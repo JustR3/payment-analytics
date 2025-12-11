@@ -10,7 +10,7 @@ This project demonstrates a comprehensive payment analytics solution built for t
 
 ```bash
 # 1. Start the analytics environment
-git clone <this-repo>
+git clone https://github.com/JustR3/payment-analytics.git
 cd payment-analytics
 docker-compose up -d
 
