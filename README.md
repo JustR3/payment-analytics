@@ -145,7 +145,40 @@ docker-compose up -d
 
 ## Key Findings
 
-*(To be populated after dashboard analysis)*
+### 🔴 Payment Success Rate Below Industry Benchmark
+- **Current**: 77.5% success rate
+- **Target**: 85% (industry standard for subscription payments)
+- **Gap**: 7.5 percentage points represents significant revenue leakage
+
+### 💰 Revenue at Risk
+- **$624.95/month** in MRR at risk from failed/pending payments
+- **41 subscriptions** affected (20.5% of total)
+- **Annualized impact**: ~$7,500 in at-risk ARR
+
+### 🎯 Top Failure Reasons
+1. **Insufficient Funds** (31.2%) - High severity, customer action required
+2. **Card Expired** (31.2%) - High severity, preventable with proactive notifications
+3. **Gateway Errors** (15.6%) - Medium severity, technical fix opportunity
+
+### 📊 Provider Performance Insights
+- **SEPA/Wire transfers**: Higher success rates (~82-88%)
+- **Crypto payments**: Lowest success rate (~70%)
+- **Card processors** (Stripe, PayPal, CardDirect): Cluster around 75-80%
+
+### 🌍 Geographic Concentration
+- **50% US-based** transactions (opportunity for diversification)
+- **Strong European presence** (DE, ES, CH, FR, IT) aligns with Proton's base
+- **Emerging markets** (LATAM, APAC) show growth potential
+
+### 💡 Quick Win Opportunities
+1. **Fix gateway errors** → Immediate $50-75/month recovery
+2. **Card expiry notifications** → Prevent 50% of card_expired failures
+3. **Smart retry logic** → +30% recovery on failed payments
+4. **Enterprise white-glove support** → Protect 85% of revenue
+
+**📈 Total Recovery Potential**: $400-525/month (~$5,000-6,300/year)
+
+**See [dashboards/KEY_FINDINGS.md](dashboards/KEY_FINDINGS.md) for detailed analysis.**
 
 ## Data Quality & Assumptions
 
