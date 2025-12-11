@@ -128,11 +128,11 @@ Thank you for considering my application. I'm excited about the possibility of c
 
 **Best regards,**
 
-[Your Name]  
-[Your Email]  
-[Your Phone]  
-[Your LinkedIn]  
-[Your GitHub]
+Radoslav Gazenov  
+radoslava.gazenov@gmail.com   
++41 76 651 18 48
+https://linkedin.com/in/rgazenov
+https://github.com/justr3
 
 ---
 
