@@ -1,0 +1,24 @@
+[project]
+name = "payment-analytics"
+version = "0.1.0"
+description = "Proton Payment Analytics - Finance & Customer Payments Dashboard"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.1.0",
+    "numpy>=1.24.0",
+    "sqlalchemy>=2.0.0",
+    "psycopg2-binary>=2.9.0",
+    "pyarrow>=14.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter>=1.0.0",
+    "ipython>=8.12.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
