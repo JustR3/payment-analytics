@@ -10,7 +10,7 @@ This script:
 4. Validates the data load
 
 Requires: PostgreSQL running (via docker-compose)
-Input: data/processed/payments_proton.parquet
+Input: data/processed/payments_enriched.parquet
 Output: PostgreSQL 'payments' table
 """
 
@@ -22,15 +22,15 @@ import sys
 
 # File paths
 BASE_DIR = Path(__file__).parent.parent
-INPUT_FILE = BASE_DIR / 'data' / 'processed' / 'payments_proton.parquet'
+INPUT_FILE = BASE_DIR / 'data' / 'processed' / 'payments_enriched.parquet'
 
 # Database connection parameters
 DB_CONFIG = {
     'host': 'localhost',
     'port': 5432,
     'database': 'payments_analytics',
-    'user': 'proton',
-    'password': 'proton_analytics_2024'
+    'user': 'analytics_user',
+    'password': 'analytics_pass_2024'
 }
 
 def create_connection_string():

@@ -5,7 +5,7 @@
 set -e  # Exit on error
 
 echo "======================================================================"
-echo "PROTON PAYMENT ANALYTICS - QUICK START"
+echo "PAYMENT ANALYTICS - QUICK START"
 echo "======================================================================"
 
 # Colors for output
@@ -46,7 +46,7 @@ uv pip install pandas numpy sqlalchemy psycopg2-binary pyarrow python-dotenv
 echo -e "${GREEN}✓ Dependencies installed${NC}"
 
 # Step 3: Process data if not already done
-if [ ! -f "data/processed/payments_proton.parquet" ]; then
+if [ ! -f "data/processed/payments_enriched.parquet" ]; then
     echo ""
     echo "Processing data..."
     echo "  → Step 1/2: Cleaning data..."
@@ -70,7 +70,7 @@ echo "Waiting for PostgreSQL to be ready..."
 sleep 5
 
 # Check if database is ready
-until docker-compose exec -T postgres pg_isready -U proton > /dev/null 2>&1; do
+until docker-compose exec -T postgres pg_isready -U analytics_user > /dev/null 2>&1; do
     echo "  Waiting for PostgreSQL..."
     sleep 2
 done

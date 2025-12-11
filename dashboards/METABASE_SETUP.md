@@ -23,7 +23,7 @@ docker-compose ps
 - **Language**: Select English (or your preference)
 - **First name**: Your name
 - **Email**: Your email
-- **Company/Team name**: Proton Payment Analytics
+- **Company/Team name**: Payment Analytics
 - **Password**: Create a secure password
 
 #### Step 2: Add Database Connection
@@ -36,8 +36,8 @@ Configure the PostgreSQL connection:
   - If connecting from your local machine (outside Docker), use: `localhost`
 - **Port**: `5432`
 - **Database name**: `payments_analytics`
-- **Username**: `proton`
-- **Password**: `proton_analytics_2024`
+- **Username**: `analytics_user`
+- **Password**: `analytics_pass_2024`
 - **Schema**: Leave empty (will use public schema)
 
 Click "Connect database" and wait for Metabase to sync the schema.
@@ -296,7 +296,7 @@ ORDER BY mrr_at_risk DESC;
 - Restart: `docker-compose restart metabase`
 
 ### Data not appearing
-- Verify data was loaded: `docker-compose exec postgres psql -U proton -d payments_analytics -c "SELECT COUNT(*) FROM payments;"`
+- Verify data was loaded: `docker-compose exec postgres psql -U analytics_user -d payments_analytics -c "SELECT COUNT(*) FROM payments;"`
 - Re-sync database in Metabase: Settings → Admin → Databases → Payment Analytics Database → Sync
 
 ### Slow queries

@@ -355,7 +355,6 @@ This analysis demonstrates a **production-ready payment analytics capability** w
 
 ---
 
-**Prepared by**: [Your Name]  
+**Project**: Payment Analytics Platform  
 **Date**: December 11, 2025  
-**Role**: Data Analyst – Finance & Customer Payments (Portfolio Project)  
 **GitHub**: [Repository Link]

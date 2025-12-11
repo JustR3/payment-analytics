@@ -29,11 +29,11 @@ if docker-compose ps | grep -q "payment-analytics-db"; then
         echo -e "  ${GREEN}✓${NC} PostgreSQL is running"
         
         # Check if database is accessible
-        if docker-compose exec -T postgres pg_isready -U proton > /dev/null 2>&1; then
+        if docker-compose exec -T postgres pg_isready -U analytics_user > /dev/null 2>&1; then
             echo -e "  ${GREEN}✓${NC} PostgreSQL is accepting connections"
             
             # Check record count
-            RECORD_COUNT=$(docker-compose exec -T postgres psql -U proton -d payments_analytics -t -c "SELECT COUNT(*) FROM payments;" 2>/dev/null | tr -d ' ')
+            RECORD_COUNT=$(docker-compose exec -T postgres psql -U analytics_user -d payments_analytics -t -c "SELECT COUNT(*) FROM payments;" 2>/dev/null | tr -d ' ')
             if [ ! -z "$RECORD_COUNT" ]; then
                 echo -e "  ${GREEN}✓${NC} Database contains $RECORD_COUNT records"
             fi
@@ -81,7 +81,7 @@ else
     echo -e "  ${YELLOW}⚠${NC} Cleaned data not found"
 fi
 
-if [ -f "data/processed/payments_proton.parquet" ]; then
+if [ -f "data/processed/payments_enriched.parquet" ]; then
     echo -e "  ${GREEN}✓${NC} Enriched data exists"
 else
     echo -e "  ${YELLOW}⚠${NC} Enriched data not found"

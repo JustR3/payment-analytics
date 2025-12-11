@@ -17,7 +17,7 @@ docker-compose up -d
 # 2. Access Metabase at http://localhost:3000
 # First-time setup: Create account, then connect to PostgreSQL
 # Host: postgres, Database: payments_analytics
-# User: proton, Password: proton_analytics_2024
+# User: analytics_user, Password: analytics_pass_2024
 ```
 
 The database is already populated with analyzed data. Dashboards and insights are documented in [`dashboards/KEY_FINDINGS.md`](dashboards/KEY_FINDINGS.md).
@@ -191,7 +191,7 @@ docker-compose up -d
 
 ### 🌍 Geographic Concentration
 - **50% US-based** transactions (opportunity for diversification)
-- **Strong European presence** (DE, ES, CH, FR, IT) aligns with Proton's base
+- **Strong European presence** (DE, ES, CH, FR, IT) common in subscription businesses
 - **Emerging markets** (LATAM, APAC) show growth potential
 
 ### 💡 Quick Win Opportunities
@@ -210,7 +210,7 @@ docker-compose up -d
 1. **Geographic Inference**: Email domains used to infer customer regions
 2. **Provider Mapping**: Payment methods mapped to likely processors
 3. **Processing Time**: Synthetic but follows realistic distributions
-4. **Product Mapping**: Plan names mapped to Proton product suite
+4. **Product Mapping**: Plan names mapped to generic product categories
 
 ### Data Quality:
 - All dates validated and standardized

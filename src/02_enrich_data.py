@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Data Enrichment with Proton-like Business Context
-==================================================
+Data Enrichment with Business Context
+======================================
 
 This script enriches the cleaned payment data with synthetic but realistic
-business dimensions relevant to Proton's payment analytics needs:
+business dimensions for payment analytics:
 
 1. Payment Provider: Map payment methods to actual payment processors
 2. Geographic Region: Infer from email domains and customer distribution
-3. Product Tier: Map to Proton product suite
+3. Product Tier: Map to subscription product categories
 4. Processing Time: Add realistic payment processing latency
 5. MRR at Risk: Calculate monthly recurring revenue at risk
 6. Failure Reason Standardization: Categorize and standardize failure reasons
@@ -16,7 +16,7 @@ business dimensions relevant to Proton's payment analytics needs:
 All synthetic data generation is documented with clear logic and assumptions.
 
 Input: data/processed/payments_clean.parquet
-Output: data/processed/payments_proton.parquet
+Output: data/processed/payments_enriched.parquet
 """
 
 import pandas as pd
@@ -29,7 +29,7 @@ np.random.seed(42)
 # File paths
 BASE_DIR = Path(__file__).parent.parent
 INPUT_FILE = BASE_DIR / 'data' / 'processed' / 'payments_clean.parquet'
-OUTPUT_FILE = BASE_DIR / 'data' / 'processed' / 'payments_proton.parquet'
+OUTPUT_FILE = BASE_DIR / 'data' / 'processed' / 'payments_enriched.parquet'
 
 # Configuration for synthetic data generation
 PAYMENT_PROVIDERS = {
@@ -119,13 +119,13 @@ EMAIL_DOMAIN_TO_REGION = {
     '.za': 'ZA',
 }
 
-# Proton product mapping based on plan characteristics
+# Product tier mapping based on plan characteristics
 PRODUCT_TIER_MAPPING = {
     'Monthly Basic': 'Mail Plus',
     'Quarterly Standard': 'Drive Plus',
     'Quarterly Premium': 'Unlimited',
     'Yearly Lite': 'VPN Plus',
-    'Yearly Enterprise': 'Proton for Business',
+    'Yearly Enterprise': 'Business',
     'Weekly Access': 'VPN Plus',
     'Weekly Student': 'VPN Plus',
     'Weekly Lite Plan': 'VPN Plus',
@@ -133,7 +133,7 @@ PRODUCT_TIER_MAPPING = {
     'Quarterly Standard Plan': 'Drive Plus',
     'Quarterly Premium Plan': 'Unlimited',
     'Yearly Lite Plan': 'VPN Plus',
-    'Yearly Enterprise Plan': 'Proton for Business',
+    'Yearly Enterprise Plan': 'Business',
 }
 
 # Standardized failure reasons
@@ -226,15 +226,15 @@ def add_geographic_region(df):
 
 def add_product_tier(df):
     """
-    Map plan names to Proton product tiers.
+    Map plan names to product tiers.
     
     Logic:
-    - Map based on plan_name to Proton products:
+    - Map based on plan_name to product categories:
       - Basic -> Mail Plus
       - Standard -> Drive Plus
       - Premium -> Unlimited
       - Lite/Weekly -> VPN Plus
-      - Enterprise -> Proton for Business
+      - Enterprise -> Business
     """
     print("\nAdding product tier...")
     
@@ -459,7 +459,7 @@ def save_enriched_data(df):
     print(f"Saved {len(df):,} records with {len(df.columns)} columns ({file_size:.1f} KB)")
     
     # Save sample CSV
-    sample_csv = OUTPUT_FILE.parent / 'payments_proton_sample.csv'
+    sample_csv = OUTPUT_FILE.parent / 'payments_enriched_sample.csv'
     df.head(100).to_csv(sample_csv, index=False)
     print(f"Saved sample (100 rows) to {sample_csv}")
     
@@ -472,7 +472,7 @@ def save_enriched_data(df):
 def main():
     """Main execution flow"""
     print("=" * 70)
-    print("PAYMENT DATA ENRICHMENT - PROTON BUSINESS CONTEXT")
+    print("PAYMENT DATA ENRICHMENT - BUSINESS CONTEXT")
     print("=" * 70)
     
     # Load cleaned data
@@ -497,7 +497,7 @@ def main():
     print("\nSynthetic fields added (with documented logic):")
     print("  1. payment_provider - Mapped from payment_method")
     print("  2. geo_region - Inferred from email domain")
-    print("  3. product_tier - Mapped from plan_name to Proton products")
+    print("  3. product_tier - Mapped from plan_name to product categories")
     print("  4. processing_time_s - Realistic latency based on method")
     print("  5. processing_time_bucket - Categorized latency")
     print("  6. mrr_at_risk - Calculated from failed/pending payments")

@@ -1,7 +1,7 @@
 [project]
 name = "payment-analytics"
 version = "0.1.0"
-description = "Proton Payment Analytics - Finance & Customer Payments Dashboard"
+description = "Payment Analytics Platform - Subscription Billing Analysis"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
