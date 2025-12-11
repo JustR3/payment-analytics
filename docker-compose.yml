@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: payment-analytics-db
+    environment:
+      POSTGRES_USER: proton
+      POSTGRES_PASSWORD: proton_analytics_2024
+      POSTGRES_DB: payments_analytics
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U proton"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - analytics_network
+
+  # Metabase Business Intelligence
+  metabase:
+    image: metabase/metabase:latest
+    container_name: payment-analytics-metabase
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER: proton
+      MB_DB_PASS: proton_analytics_2024
+      MB_DB_HOST: postgres
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - metabase_data:/metabase-data
+    networks:
+      - analytics_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  metabase_data:
+    driver: local
+
+networks:
+  analytics_network:
+    driver: bridge
