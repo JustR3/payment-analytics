@@ -4,6 +4,24 @@
 
 This project demonstrates a comprehensive payment analytics solution built for the **Proton Data Analyst – Finance & Customer Payments** role. It analyzes subscription billing data to identify payment friction points, provider performance, and revenue risks using industry-standard tools and methodologies.
 
+## Quick Start (For Reviewers)
+
+**Clone and run this project in 2 steps:**
+
+```bash
+# 1. Start the analytics environment
+git clone <this-repo>
+cd payment-analytics
+docker-compose up -d
+
+# 2. Access Metabase at http://localhost:3000
+# First-time setup: Create account, then connect to PostgreSQL
+# Host: postgres, Database: payments_analytics
+# User: proton, Password: proton_analytics_2024
+```
+
+The database is already populated with analyzed data. Dashboards and insights are documented in [`dashboards/KEY_FINDINGS.md`](dashboards/KEY_FINDINGS.md).
+
 ## Objective
 
 Build a production-ready analytics pipeline that:
