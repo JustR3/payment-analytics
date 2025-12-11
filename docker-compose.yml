@@ -5,7 +5,7 @@ services:
     container_name: payment-analytics-db
     environment:
       POSTGRES_USER: proton
-      POSTGRES_PASSWORD: proton_analytics_2024
+      POSTGRES_PASSWORD: proton_analytics_2025
       POSTGRES_DB: payments_analytics
     ports:
       - "5432:5432"
