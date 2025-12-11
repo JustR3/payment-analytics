@@ -49,11 +49,17 @@ payment-analytics/
 │   └── processed/              # Cleaned and enriched parquet files
 ├── src/                        # Python data processing scripts
 │   ├── 01_clean_data.py       # Data cleaning and standardization
-│   └── 02_enrich_data.py      # Business context enrichment
-├── scripts/                    # Utility and setup scripts
-├── dashboards/                 # Dashboard screenshots and documentation
-├── docker-compose.yml          # Metabase + PostgreSQL setup
-├── pyproject.toml             # Python dependencies (UV)
+│   ├── 02_enrich_data.py      # Business context enrichment
+│   └── 03_load_to_db.py       # Database loading script
+├── scripts/                    # Utility scripts
+│   ├── quickstart.sh          # Automated setup script
+│   └── status.sh              # Service status checker
+├── dashboards/                 # Analysis and documentation
+│   ├── DATA_DOCUMENTATION.md  # Data schema documentation
+│   ├── KEY_FINDINGS.md        # Detailed analysis & insights
+│   └── METABASE_SETUP.md      # Metabase configuration guide
+├── docker-compose.yml          # PostgreSQL + Metabase setup
+├── pyproject.toml             # Python dependencies
 └── README.md                  # This file
 ```
 
@@ -229,9 +235,3 @@ Created as a portfolio project demonstrating:
 - Dashboard design for financial stakeholders
 - Understanding of SaaS billing and payment systems
 - Data pipeline development
-
----
-
-**Contact**: [Your Email]  
-**LinkedIn**: [Your LinkedIn]  
-**GitHub**: [Your GitHub]
