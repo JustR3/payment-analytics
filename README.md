@@ -1,10 +1,10 @@
-# Proton Payment Analytics
+# Payment Analytics Platform
 
 ## Project Overview
 
-This project demonstrates a comprehensive payment analytics solution built for the **Proton Data Analyst – Finance & Customer Payments** role. It analyzes subscription billing data to identify payment friction points, provider performance, and revenue risks using industry-standard tools and methodologies.
+A comprehensive payment analytics solution for analyzing subscription billing data. This project identifies payment friction points, provider performance, and revenue risks using industry-standard tools and methodologies.
 
-## Quick Start (For Reviewers)
+## Quick Start
 
 **Clone and run this project in 2 steps:**
 
@@ -22,14 +22,14 @@ docker-compose up -d
 
 The database is already populated with analyzed data. Dashboards and insights are documented in [`dashboards/KEY_FINDINGS.md`](dashboards/KEY_FINDINGS.md).
 
-## Objective
+## Features
 
-Build a production-ready analytics pipeline that:
+This analytics pipeline:
 - Identifies payment failure patterns and friction points
 - Analyzes provider and payment method performance
 - Calculates Monthly Recurring Revenue (MRR) at risk
-- Provides actionable insights through interactive Metabase dashboards
-- Demonstrates proficiency in SQL, Python, data modeling, and BI tools
+- Provides actionable insights through interactive dashboards
+- Demonstrates data engineering and analytics best practices
 
 ## Technology Stack
 
@@ -78,10 +78,10 @@ payment-analytics/
   - `txn_value_bucket`: Transaction size categorization
 
 ### 3. Data Enrichment (`src/02_enrich_data.py`)
-Adds realistic Proton-like business context:
+Adds realistic business context:
 - **Payment Provider**: Maps payment methods to processors (Stripe, PayPal, CardDirect, Crypto)
 - **Geographic Region**: Infers from email domains (CH, DE, FR, US, etc.)
-- **Product Tier**: Maps to Proton products (MailPlus, DrivePlus, VPNPlus, Unlimited)
+- **Product Tier**: Maps to subscription product categories
 - **Processing Time**: Synthetic but realistic latency metrics
 - **MRR at Risk**: Calculates revenue risk from failed payments
 - **Failure Categorization**: Standardizes failure reasons
@@ -227,11 +227,11 @@ docker-compose up -d
 - Revenue recognition automation
 - Multi-currency support
 
-## Author
+## About
 
-Created as a portfolio project demonstrating:
-- Payment analytics expertise
+A portfolio project demonstrating:
+- Payment analytics and data engineering
 - SQL and Python proficiency
-- Dashboard design for financial stakeholders
-- Understanding of SaaS billing and payment systems
-- Data pipeline development
+- Dashboard design for business insights
+- Understanding of subscription billing and payment systems
+- End-to-end data pipeline development
